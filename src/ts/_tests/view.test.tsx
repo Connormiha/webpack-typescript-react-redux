@@ -10,8 +10,8 @@ describe('Generator test', function () {
     it('Test ItemsList component', function () {
         const items: Array<NameItem> = [{
           id: 1,
-          job: 'Programmer'
-          name: 'Ivan',
+          job: 'Programmer',
+          name: 'Ivan'
         }];
 
         const view: React.Component<View.ItemListPropsInterface, {}> = ReactTestUtils.renderIntoDocument(
