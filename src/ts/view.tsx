@@ -1,30 +1,33 @@
 'use strict';
 
 import * as React from 'react';
-import * as Reflux from 'reflux';
 import * as Store from './store';
-import * as ReactRouter from 'react-router';
+import {Link, IndexLink}from 'react-router';
+import { connect } from 'react-redux';
+import { GenerateClick } from './actions';
+import {NameItem} from './generator';
 
-const STORE_MIXINS = Reflux.connect(Store.eventStore, 'list');
+export interface ItemListPropsInterface {
+		items: Array<NameItem>;
+};
 
-export const ItemsList = React.createClass({
-	mixins: [STORE_MIXINS],
-
+export class ItemsList extends React.Component<ItemListPropsInterface, {}> {
 	render () {
-		const items = this.state.list.map(function(item) {
+		const items: Array<React.ReactElement<NameItem>> = this.props.items.map((item) => {
 			return (
 				<Item name={item.name} job={item.job} key={item.id} id={item.id}></Item>
 			);
 		});
+
 		return (
 			<ul className='items-list'>
 				{items}
 			</ul>
 		);
 	}
-});
+};
 
-export class Item extends React.Component<any, any> {
+export class Item extends React.Component<NameItem, {}> {
 	render () {
 		return (
 			<div className='item'>
@@ -36,7 +39,7 @@ export class Item extends React.Component<any, any> {
 	}
 };
 
-export class AppName extends React.Component<any, any> {
+export class AppName extends React.Component<any, {}> {
 	render () {
 		return (
 			<h1>{this.props.name}</h1>
@@ -44,19 +47,15 @@ export class AppName extends React.Component<any, any> {
 	}
 };
 
-export class BtnGenerate extends React.Component<any, any> {
-	handleClick (): void {
-		Store.actions.generateClick();
-	}
-
+export class BtnGenerate extends React.Component<any, {}> {
 	render () {
 		return (
-			<input type='button' value={this.props.value} onClick={this.handleClick.bind(this)} />
+			<input type='button' value={this.props.value} onClick={this.props.onClick} />
 		);
 	}
 };
 
-export class About extends React.Component<any, any> {
+export class About extends React.Component<any, {}> {
 	render () {
 		return (
 			<div>
@@ -69,23 +68,32 @@ export class About extends React.Component<any, any> {
 					<li>Webpack</li>
 					<li>Stylus</li>
 				</ul>
-				<ReactRouter.IndexLink to="/">To main page</ReactRouter.IndexLink>
+				<IndexLink to="/">To main page</IndexLink>
 			</div>
 		);
 	}
 };
 
-export class GeneratorApp extends React.Component<any, any> {
+@connect(state => state)
+export class GeneratorApp extends React.Component<any, {}> {
+
+	onGenerateClick() {
+			this.props.dispatch(GenerateClick(5));
+	}
+
 	render () {
 		return (
 			<section id="generator-app">
 				<section id="content">
-					<ItemsList />
+					<ItemsList items={this.props.people} />
 				</section>
 				<div id="buttons">
-					<BtnGenerate value='Regenerate list' />
+					<BtnGenerate
+						value='Regenerate list'
+						onClick={this.onGenerateClick.bind(this)}
+						 />
 				</div>
-				<ReactRouter.Link to="/about">About this project</ReactRouter.Link>
+				<Link to="/about">About this project</Link>
 			</section>
 		);
 	}

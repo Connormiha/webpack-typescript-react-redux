@@ -1,10 +1,10 @@
-# webpack-typescript-react
+# webpack-typescript-react-redux
 [Описание на русском языке](readme_ru.md)     
 
 Hello world simple page application.  
 **TypeScript** - compile to ES5  
 **Stylus** - css preprocessor  
-**React** **Reflux**  
+**React** **Redux**  
 **Webpack** - build manager  
 **Karma** - unit tests runner  
 **Jasmine** - unit tests library  

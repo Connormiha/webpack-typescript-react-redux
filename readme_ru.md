@@ -1,9 +1,9 @@
-# webpack-typescript-react
+# webpack-typescript-react-redux
 
 Пустой Hello world SPA проект. Используется следующий стек технологий:  
 **TypeScript** - собирается в ES5  
 **Stylus** - css препроцессор  
-**React** **Reflux**  
+**React** **Redux**  
 **Webpack** - сборщик  
 **Karma** - Запускает юнит тесты  
 **Jasmine** - Библиотека для юнит тестов  
