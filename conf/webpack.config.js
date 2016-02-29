@@ -62,12 +62,6 @@ module.exports = {
 				loader: 'ts',
 				exclude: /node_modules/
 			},
-			// // transpile and instrument only testing sources with isparta
-      // {
-      //     test: /\.js$/,
-      //     exclude: /node_modules/,
-      //     loader: 'isparta'
-      // },
 			{
 				test: /\.css$/,
 				loader: cssLoaders

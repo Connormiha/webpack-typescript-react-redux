@@ -56,8 +56,10 @@ describe('Views tests', function () {
 
             subscribe: function () {
                 //pass
-            }
+            },
         };
+
+        spyOn(FAKE_STORE, 'subscribe');
 
         const view: React.Component<any, {}> = ReactTestUtils.renderIntoDocument(
           <View.GeneratorApp store={FAKE_STORE} />
@@ -65,5 +67,6 @@ describe('Views tests', function () {
 
         const elements: Array<Element> = ReactTestUtils.scryRenderedDOMComponentsWithTag(view, 'A');
         expect(elements.length).toBe(1);
+        expect(FAKE_STORE.subscribe).toHaveBeenCalled();
     });
 });
