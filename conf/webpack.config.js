@@ -16,6 +16,17 @@ let stylusLoaders = `${cssLoaders}!stylus`;
 cssLoaders = extractStyle(cssLoaders);
 stylusLoaders = extractStyle(stylusLoaders);
 
+const POST_LOADERS = [];
+
+if (NODE_ENV === 'unittest') {
+		// add Isparta loader for code coverage if unit tests are runnig
+		POST_LOADERS.push({
+			test: /\.tsx?$/,
+			loader: 'isparta',
+			exclude: /node_modules|\.test\.tsx?$/
+		});
+}
+
 if (NODE_ENV === 'production') {
 	PARAMS.LIBS_ALIASES = {
 		react: `${__dirname}/node_modules/react/dist/react.min.js`,
@@ -44,12 +55,19 @@ module.exports = {
 	},
 	watch: PARAMS.watch,
 	module: {
+		postLoaders: [POST_LOADERS],
 		loaders: [
 			{
 				test: /\.tsx?$/,
 				loader: 'ts',
 				exclude: /node_modules/
 			},
+			// // transpile and instrument only testing sources with isparta
+      // {
+      //     test: /\.js$/,
+      //     exclude: /node_modules/,
+      //     loader: 'isparta'
+      // },
 			{
 				test: /\.css$/,
 				loader: cssLoaders
@@ -59,9 +77,9 @@ module.exports = {
 				loader: stylusLoaders
 			},
 			{
-	          test: /\.(png|svg|jpg|gif)$/,
-	          loader: "file",
-	        }
+        test: /\.(png|svg|jpg|gif)$/,
+        loader: "file",
+      }
 		],
 	},
 	devtool: PARAMS.sourceMap,

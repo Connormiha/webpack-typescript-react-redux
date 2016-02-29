@@ -33,22 +33,27 @@ module.exports = function (options) {
 
         webpack: WEBPACK_CONFIG,
 
+        coverageReporter: {
+          type: 'text'
+        },
+
         // list of files to exclude
         exclude: [],
 
         plugins: [
-            'karma-jasmine',
-            'karma-webpack',
-            'karma-phantomjs-launcher',
+            'karma-coverage',
             'karma-chrome-launcher',
+            'karma-jasmine',
             'karma-notify-reporter',
-            'karma-spec-reporter'
+            'karma-phantomjs-launcher',
+            'karma-spec-reporter',
+            'karma-webpack'
         ],
 
         // test results reporter to use
         // possible values: 'dots', 'progress'
         // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-        reporters: ['spec', 'notify'],
+        reporters: ['spec', 'coverage', 'notify'],
 
 
         // web server port

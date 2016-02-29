@@ -6,8 +6,8 @@ import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-addons-test-utils';
 import {NameItem} from '../generator';
 
-describe('Generator test', function () {
-    it('Test ItemsList component', function () {
+describe('Views tests', function () {
+    it('Test ItemsList Component', function () {
         const items: Array<NameItem> = [{
           id: 1,
           job: 'Programmer',
@@ -22,5 +22,48 @@ describe('Generator test', function () {
         expect(elements.length).toBe(1);
         expect(elements[0].querySelectorAll('.item__text').length).toBe(1);
         expect(elements[0].querySelector('.item__text').textContent).toBe('Ivan Programmer');
+    });
+
+    it('Test App Component', function () {
+        const view: React.Component<any, any> = ReactTestUtils.renderIntoDocument(
+          <View.App><div className="test"></div></View.App>
+        );
+
+        const elements: Array<Element> = ReactTestUtils.scryRenderedDOMComponentsWithClass(view, 'test');
+        expect(elements.length).toBe(1);
+    });
+
+    it('Test About Component', function () {
+        const view: React.Component<any, {}> = ReactTestUtils.renderIntoDocument(
+          <View.About />
+        );
+
+        const elements: Array<Element> = ReactTestUtils.scryRenderedDOMComponentsWithClass(view, 'list');
+        expect(elements.length).toBe(1);
+    });
+
+    it('Test GeneratorApp Component', function () {
+        const FAKE_STORE = {
+            dispatch: function () {
+                //pass
+            },
+
+            getState: function () {
+                return {
+                    people: []
+                };
+            },
+
+            subscribe: function () {
+                //pass
+            }
+        };
+
+        const view: React.Component<any, {}> = ReactTestUtils.renderIntoDocument(
+          <View.GeneratorApp store={FAKE_STORE} />
+        );
+
+        const elements: Array<Element> = ReactTestUtils.scryRenderedDOMComponentsWithTag(view, 'A');
+        expect(elements.length).toBe(1);
     });
 });

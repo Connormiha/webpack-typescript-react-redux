@@ -10,8 +10,6 @@ import { Provider, connect } from 'react-redux';
 //import CSS
 import '../css/style.styl';
 
-
-
 render(
   <Provider store={store}>
       <Router history={browserHistory}>

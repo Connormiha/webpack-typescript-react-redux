@@ -17,7 +17,7 @@
     "lint": "node node_modules/gulp/bin/gulp.js lint",
     "postinstall": "node node_modules/typings/dist/bin/typings.js install",
     "start": "node node_modules/webpack-dev-server/bin/webpack-dev-server --config conf/webpack.config.js",
-    "test": "node node_modules/karma/bin/karma start conf/karma.conf.js",
+    "test": "NODE_ENV=unittest node node_modules/karma/bin/karma start conf/karma.conf.js",
     "test:dev": "node node_modules/karma/bin/karma start conf/karma.dev.conf.js"
   },
   "devDependencies": {
@@ -29,9 +29,12 @@
     "gulp-stylint": "^3.0.0",
     "gulp-tslint": "^4.3.2",
     "html-webpack-plugin": "^2.9.0",
+    "isparta": "^4.0.0",
+    "isparta-loader": "^2.0.0",
     "jasmine-core": "^2.4.1",
     "karma": "^0.13.21",
     "karma-chrome-launcher": "^0.2.2",
+    "karma-coverage": "^0.5.3",
     "karma-jasmine": "^0.3.7",
     "karma-notify-reporter": "^0.1.1",
     "karma-phantomjs-launcher": "^1.0.0",

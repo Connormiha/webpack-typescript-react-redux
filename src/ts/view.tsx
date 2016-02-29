@@ -61,7 +61,7 @@ export class About extends React.Component<any, {}> {
 			<div>
 				<p>This is Started development kit for Single Page Application.</p>
 				<p>Using stack technologies:</p>
-				<ul>
+				<ul className='list'>
 					<li>React</li>
 					<li>React-router</li>
 					<li>Typescript</li>
