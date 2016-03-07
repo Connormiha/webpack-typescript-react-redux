@@ -10,14 +10,8 @@ const people = (state: Array<NameItem> = generateRandom(5), action): Array<NameI
     return state;
 };
 
-const sometest = (state = [], action) => {
-    console.log('sometest');
-    return state;
-};
-
 const rootReducer = combineReducers({
-  people,
-  sometest
+  people
 });
 
 export default rootReducer;
