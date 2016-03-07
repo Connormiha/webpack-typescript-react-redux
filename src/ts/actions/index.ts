@@ -5,7 +5,7 @@ export interface GenerateClickActionInterface {
   type: string;
 };
 
-export const GenerateClick = (count: number): GenerateClickActionInterface => {
+export const generateClick = (count: number): GenerateClickActionInterface => {
     return {
         type: 'GENERATE_CLICK',
         count

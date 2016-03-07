@@ -4,7 +4,7 @@ import * as React from 'react';
 import * as Store from './store';
 import {Link, IndexLink}from 'react-router';
 import { connect } from 'react-redux';
-import { GenerateClick } from './actions';
+import { generateClick } from './actions';
 import {NameItem} from './generator';
 
 export interface ItemListPropsInterface {
@@ -40,7 +40,7 @@ export class Item extends React.Component<NameItem, {}> {
 };
 
 export class AppName extends React.Component<any, {}> {
-	render () {
+	render() {
 		return (
 			<h1>{this.props.name}</h1>
 		);
@@ -74,11 +74,21 @@ export class About extends React.Component<any, {}> {
 	}
 };
 
-@connect(state => state)
+@connect(
+	state => {return {
+			people: state.people
+		};
+	},
+	dispatch => {
+			return {
+					onClickGenerate: (count: number) => dispatch(generateClick(count))
+			};
+	}
+)
 export class GeneratorApp extends React.Component<any, {}> {
 
 	onGenerateClick() {
-			this.props.dispatch(GenerateClick(5));
+			this.props.onClickGenerate(5);
 	}
 
 	render () {

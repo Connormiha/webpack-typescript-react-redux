@@ -28,16 +28,12 @@ if (NODE_ENV === 'unittest') {
 }
 
 if (NODE_ENV === 'production') {
-	PARAMS.LIBS_ALIASES = {
-		react: `${__dirname}/node_modules/react/dist/react.min.js`,
-		'react-dom': `${__dirname}/node_modules/react-dom/dist/react-dom.min.js`
-	}
 	PARAMS.watch = false;
-	PARAMS.FOLDER = `${__dirname}/build`;
+	PARAMS.FOLDER = `${__dirname}/../build`;
 } else {
 	PARAMS.sourceMap = 'inline-source-map';
 	PARAMS.watch = true;
-	PARAMS.FOLDER = `${__dirname}/deploy`;
+	PARAMS.FOLDER = `${__dirname}/../deploy`;
 }
 
 module.exports = {
@@ -48,10 +44,7 @@ module.exports = {
 	},
 	resolve: {
 		modulesDirectories: ['node_modules'],
-		extensions:         ['', '.js', '.ts', '.tsx'],
-		alias: Object.assign({
-			///libs
-		}, PARAMS.LIBS_ALIASES)
+		extensions:         ['', '.js', '.ts', '.tsx']
 	},
 	watch: PARAMS.watch,
 	module: {
@@ -85,7 +78,12 @@ module.exports = {
 				//removeComments: true
 			}
 		}),
-		new ExtractTextPlugin("app.[hash].css")
+		new ExtractTextPlugin("app.[hash].css"),
+		new webpack.DefinePlugin({
+			'process.env': {
+					'NODE_ENV': JSON.stringify(NODE_ENV)
+			}
+		})
   	],
 	devServer: {
 		host: 'localhost',
