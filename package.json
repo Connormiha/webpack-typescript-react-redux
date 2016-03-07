@@ -1,5 +1,5 @@
 {
-  "name": "Webpack-typescript-react",
+  "name": "Webpack-typescript-react-redux",
   "description": "Empty project for Single Page Application. Stack technologies: Webpack, TypeScript, React, Jasmine, Karma, Stylus",
   "version": "0.0.1",
   "license": "MIT",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/Connormiha/webpack-typescript-react.git"
+    "url": "git://github.com/Connormiha/webpack-typescript-react-redux.git"
   },
   "scripts": {
     "build": "NODE_ENV=production node node_modules/webpack/bin/webpack --config conf/webpack.config.js",
