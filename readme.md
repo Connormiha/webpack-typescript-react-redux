@@ -8,11 +8,12 @@ Hello world simple page application.
 **Webpack** - build manager  
 **Karma** - unit tests runner  
 **Jasmine** - unit tests library  
+**Isparta** - code coverage  
 **Typings** - DefinitelyTyped libs manager  
 **tslint, stylint** - TypeScript and Stylus code validation  
 **Gulp** for run linters
 
-Only for Node.js 4+
+Tested with Node.js 5+
 ### Install
 ```
 npm install
