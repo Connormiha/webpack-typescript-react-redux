@@ -75,10 +75,7 @@ export class About extends React.Component<any, {}> {
 };
 
 @connect(
-	state => {return {
-			people: state.people
-		};
-	},
+	state => ({people: state.people}),
 	dispatch => {
 			return {
 					onClickGenerate: (count: number) => dispatch(generateClick(count))
