@@ -70,7 +70,7 @@ module.exports = {
 		],
 	},
 	devtool: PARAMS.sourceMap,
-	noParse: [/react\.min\.js/, /react-dom\.min\.js/],
+	noParse: [/\.min\.js$/],
 	plugins: [
 		new HtmlWebpackPlugin({
 	        template: './src/index.html',
