@@ -1,40 +1,8 @@
 import * as React from 'react';
-import {Link, IndexLink}from 'react-router';
+import {Link} from 'react-router';
 import {connect} from 'react-redux';
 import {generateClick} from 'flux/people';
-import {NameItem} from 'tools/generator';
-
-export interface ItemListPropsInterface {
-	items: Array<NameItem>;
-};
-
-export class ItemsList extends React.Component<ItemListPropsInterface, {}> {
-	render () {
-		const items: Array<React.ReactElement<NameItem>> = this.props.items.map((item) => {
-			return (
-				<Item name={item.name} job={item.job} key={item.id} id={item.id}></Item>
-			);
-		});
-
-		return (
-			<ul className='items-list'>
-				{items}
-			</ul>
-		);
-	}
-};
-
-export class Item extends React.Component<NameItem, {}> {
-	render () {
-		return (
-			<div className='item'>
-				<li className="item__text">
-					{this.props.name} <i>{this.props.job}</i>
-				</li>
-			</div>
-		);
-	}
-};
+import ItemsList from 'components/common/ItemsList';
 
 export class AppName extends React.Component<any, {}> {
 	render() {

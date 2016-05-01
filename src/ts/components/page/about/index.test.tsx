@@ -1,6 +1,5 @@
 import View from './index';
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-addons-test-utils';
 
 describe('Views tests', () => {

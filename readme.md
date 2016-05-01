@@ -1,5 +1,4 @@
 # webpack-typescript-react-redux
-[Описание на русском языке](readme_ru.md)     
 
 Hello world simple page application.  
 **TypeScript** - compile to ES5  

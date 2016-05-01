@@ -1,27 +1,9 @@
 import * as View from './index';
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-addons-test-utils';
 import {NameItem} from 'tools/generator';
 
 describe('Views tests', () => {
-    it('Test ItemsList Component', () => {
-        const items: Array<NameItem> = [{
-          id: 1,
-          job: 'Programmer',
-          name: 'Ivan'
-        }];
-
-        const view: React.Component<View.ItemListPropsInterface, {}> = ReactTestUtils.renderIntoDocument(
-          <View.ItemsList items={items} />
-        );
-
-        const elements: Array<Element> = ReactTestUtils.scryRenderedDOMComponentsWithClass(view, 'items-list');
-        expect(elements.length).toBe(1);
-        expect(elements[0].querySelectorAll('.item__text').length).toBe(1);
-        expect(elements[0].querySelector('.item__text').textContent).toBe('Ivan Programmer');
-    });
-
     it('Test App Component', () => {
         const view: React.Component<any, any> = ReactTestUtils.renderIntoDocument(
           <View.App><div className="test"></div></View.App>
