@@ -1,13 +1,11 @@
-'use strict';
-
-import * as View from '../view';
+import * as View from './view';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-addons-test-utils';
-import {NameItem} from '../generator';
+import {NameItem} from './tools/generator';
 
-describe('Views tests', function () {
-    it('Test ItemsList Component', function () {
+describe('Views tests', () => {
+    it('Test ItemsList Component', () => {
         const items: Array<NameItem> = [{
           id: 1,
           job: 'Programmer',
@@ -24,7 +22,7 @@ describe('Views tests', function () {
         expect(elements[0].querySelector('.item__text').textContent).toBe('Ivan Programmer');
     });
 
-    it('Test App Component', function () {
+    it('Test App Component', () => {
         const view: React.Component<any, any> = ReactTestUtils.renderIntoDocument(
           <View.App><div className="test"></div></View.App>
         );
@@ -33,7 +31,7 @@ describe('Views tests', function () {
         expect(elements.length).toBe(1);
     });
 
-    it('Test About Component', function () {
+    it('Test About Component', () => {
         const view: React.Component<any, {}> = ReactTestUtils.renderIntoDocument(
           <View.About />
         );
@@ -42,7 +40,7 @@ describe('Views tests', function () {
         expect(elements.length).toBe(1);
     });
 
-    it('Test GeneratorApp Component', function () {
+    it('Test GeneratorApp Component', () => {
         const FAKE_STORE = {
             dispatch: function () {
                 //pass

@@ -3,12 +3,12 @@
 import * as React from 'react';
 import * as Store from './store';
 import {Link, IndexLink}from 'react-router';
-import { connect } from 'react-redux';
-import { generateClick } from './actions';
-import {NameItem} from './generator';
+import {connect} from 'react-redux';
+import {generateClick} from './flux/people';
+import {NameItem} from './tools/generator';
 
 export interface ItemListPropsInterface {
-		items: Array<NameItem>;
+	items: Array<NameItem>;
 };
 
 export class ItemsList extends React.Component<ItemListPropsInterface, {}> {
@@ -75,17 +75,17 @@ export class About extends React.Component<any, {}> {
 };
 
 @connect(
-	state => ({people: state.people}),
+	({people}) => ({people}),
 	dispatch => {
-			return {
-					onClickGenerate: (count: number) => dispatch(generateClick(count))
-			};
+		return {
+			onClickGenerate: (count: number) => dispatch(generateClick(count))
+		};
 	}
 )
 export class GeneratorApp extends React.Component<any, {}> {
 
 	onGenerateClick() {
-			this.props.onClickGenerate(5);
+		this.props.onClickGenerate(5);
 	}
 
 	render () {
