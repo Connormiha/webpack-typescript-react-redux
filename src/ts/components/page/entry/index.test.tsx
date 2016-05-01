@@ -1,8 +1,8 @@
-import * as View from './view';
+import * as View from './index';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-addons-test-utils';
-import {NameItem} from './tools/generator';
+import {NameItem} from 'tools/generator';
 
 describe('Views tests', () => {
     it('Test ItemsList Component', () => {
@@ -28,15 +28,6 @@ describe('Views tests', () => {
         );
 
         const elements: Array<Element> = ReactTestUtils.scryRenderedDOMComponentsWithClass(view, 'test');
-        expect(elements.length).toBe(1);
-    });
-
-    it('Test About Component', () => {
-        const view: React.Component<any, {}> = ReactTestUtils.renderIntoDocument(
-          <View.About />
-        );
-
-        const elements: Array<Element> = ReactTestUtils.scryRenderedDOMComponentsWithClass(view, 'list');
         expect(elements.length).toBe(1);
     });
 

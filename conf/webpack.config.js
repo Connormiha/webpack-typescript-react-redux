@@ -4,7 +4,10 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const NODE_ENV = process.env.NODE_ENV || 'development';
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const path = require('path');
 const PARAMS = {};
+const nodePath = path.join(__dirname, '../node_modules');
+const sourcePath = path.join(__dirname, '../src/ts');
 
 function extractStyle(loaders) {
 	return ExtractTextPlugin.extract('style', loaders.substr(loaders.indexOf('!')));
@@ -38,22 +41,28 @@ if (NODE_ENV === 'production') {
 
 module.exports = {
 	entry: './src/ts/app.tsx',
+	//context: sourcePath,
 	output: {
 		path: PARAMS.FOLDER,
 		filename: 'app.js'
 	},
 	resolve: {
-		modulesDirectories: ['node_modules'],
+		root: [sourcePath],
+		//modulesDirectories: [nodePath],
 		extensions:         ['', '.js', '.ts', '.tsx']
 	},
+	resolveLoader: {
+        root: [nodePath]
+    },
 	watch: PARAMS.watch,
 	module: {
+		noParse: [/\.min\.js$/],
 		postLoaders: [POST_LOADERS],
 		loaders: [
 			{
 				test: /\.tsx?$/,
 				loader: 'ts',
-				exclude: /node_modules/
+				exclude: [nodePath]
 			},
 			{
 				test: /\.css$/,
@@ -70,7 +79,6 @@ module.exports = {
 		],
 	},
 	devtool: PARAMS.sourceMap,
-	noParse: [/\.min\.js$/],
 	plugins: [
 		new HtmlWebpackPlugin({
 	        template: './src/index.html',

@@ -1,5 +1,3 @@
-'use strict';
-
 const NAMES: Array<string> = [
 	'Alena', 'Anya', 'Lena', 'Marina', 'Dasha', 'Olya', 'Natasha',
 	'Vera', 'Polina', 'Katya', 'Nastya', 'Nadya'];

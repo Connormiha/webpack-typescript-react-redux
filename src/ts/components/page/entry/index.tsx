@@ -1,11 +1,8 @@
-'use strict';
-
 import * as React from 'react';
-import * as Store from './store';
 import {Link, IndexLink}from 'react-router';
 import {connect} from 'react-redux';
-import {generateClick} from './flux/people';
-import {NameItem} from './tools/generator';
+import {generateClick} from 'flux/people';
+import {NameItem} from 'tools/generator';
 
 export interface ItemListPropsInterface {
 	items: Array<NameItem>;
@@ -51,25 +48,6 @@ export class BtnGenerate extends React.Component<any, {}> {
 	render () {
 		return (
 			<input type='button' value={this.props.value} onClick={this.props.onClick} />
-		);
-	}
-};
-
-export class About extends React.Component<any, {}> {
-	render () {
-		return (
-			<div>
-				<p>This is Started development kit for Single Page Application.</p>
-				<p>Using stack technologies:</p>
-				<ul className='list'>
-					<li>React</li>
-					<li>React-router</li>
-					<li>Typescript</li>
-					<li>Webpack</li>
-					<li>Stylus</li>
-				</ul>
-				<IndexLink to="/">To main page</IndexLink>
-			</div>
 		);
 	}
 };

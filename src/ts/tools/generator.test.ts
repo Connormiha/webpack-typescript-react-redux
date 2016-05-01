@@ -1,5 +1,3 @@
-'use strict';
-
 import {generateRandom, NameItem} from './generator';
 
 describe('Generator test', () => {
