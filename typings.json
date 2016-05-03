@@ -9,6 +9,7 @@
     "redux": "github:DefinitelyTyped/DefinitelyTyped/redux/redux.d.ts#a820bbdead70913f0c750802b367ed54cb99b442"
   },
   "dependencies": {
+    "immutable": "registry:npm/immutable#3.7.6+20160411060006",
     "react-router": "registry:npm/react-router#2.0.0+20160214194820"
   }
 }

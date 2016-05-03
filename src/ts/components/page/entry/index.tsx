@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {Link} from 'react-router';
 import {connect} from 'react-redux';
-import {generateClick} from 'flux/people';
+import {generateClick, changeCount} from 'flux/people';
 import ItemsList from 'components/common/ItemsList';
 
 export class AppName extends React.Component<any, {}> {
@@ -24,26 +24,44 @@ export class BtnGenerate extends React.Component<any, {}> {
 	({people}) => ({people}),
 	dispatch => {
 		return {
-			onClickGenerate: (count: number) => dispatch(generateClick(count))
+			onChangeCount: (count: number) => dispatch(changeCount(count))
+			onClickGenerate: () => dispatch(generateClick()),
 		};
 	}
 )
 export class GeneratorApp extends React.Component<any, {}> {
 
-	onGenerateClick() {
-		this.props.onClickGenerate(5);
+	handleGenerateClick() {
+		this.props.onClickGenerate();
+	}
+
+	handleChangeCount(e) {
+		let {value} = e.target;
+
+		this.props.onChangeCount(parseInt(value, 10) || 0);
+		this.props.onClickGenerate();
 	}
 
 	render () {
+		let {people} = this.props;
+		let list = people.get('list');
+		let count = people.get('count');
+
 		return (
 			<section id="generator-app">
+				<div>
+					<label>
+						Items count
+						<input type="number" value={count || ''} max="50" onChange={this.handleChangeCount.bind(this)} />
+					</label>
+				</div>
 				<section id="content">
-					<ItemsList items={this.props.people} />
+					<ItemsList items={list} />
 				</section>
 				<div id="buttons">
 					<BtnGenerate
 						value='Regenerate list'
-						onClick={this.onGenerateClick.bind(this)}
+						onClick={this.handleGenerateClick.bind(this)}
 						 />
 				</div>
 				<Link to="/about">About this project</Link>

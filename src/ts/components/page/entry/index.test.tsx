@@ -2,6 +2,7 @@ import * as View from './index';
 import * as React from 'react';
 import * as ReactTestUtils from 'react-addons-test-utils';
 import {NameItem} from 'tools/generator';
+import * as Immutable from 'immutable';
 
 describe('Views tests', () => {
     it('Test App Component', () => {
@@ -15,19 +16,21 @@ describe('Views tests', () => {
 
     it('Test GeneratorApp Component', () => {
         const FAKE_STORE = {
-            dispatch: function () {
+            dispatch() {
                 //pass
             },
 
-            getState: function () {
+            getState() {
                 return {
-                    people: []
+                    people: Immutable.Map<string, any>({
+                        list: []
+                    })
                 };
             },
 
-            subscribe: function () {
+            subscribe() {
                 //pass
-            },
+            }
         };
 
         spyOn(FAKE_STORE, 'subscribe');

@@ -29,6 +29,7 @@
     "gulp-stylint": "^3.0.0",
     "gulp-tslint": "5.0.0",
     "html-webpack-plugin": "2.16.1",
+    "immutable": "^3.8.1",
     "isparta": "^4.0.0",
     "isparta-loader": "^2.0.0",
     "jasmine-core": "^2.4.1",
