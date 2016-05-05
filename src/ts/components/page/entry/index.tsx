@@ -24,8 +24,8 @@ export class BtnGenerate extends React.Component<any, {}> {
 	({people}) => ({people}),
 	dispatch => {
 		return {
-			onChangeCount: (count: number) => dispatch(changeCount(count))
-			onClickGenerate: () => dispatch(generateClick()),
+			onChangeCount: (count: number) => dispatch(changeCount(count)),
+			onClickGenerate: () => dispatch(generateClick())
 		};
 	}
 )
