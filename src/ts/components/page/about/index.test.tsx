@@ -1,14 +1,13 @@
 import View from './index';
 import * as React from 'react';
-import * as ReactTestUtils from 'react-addons-test-utils';
+import {shallow, ShallowWrapper} from 'enzyme';
 
 describe('Views tests', () => {
     it('Test About Component', () => {
-        const view: React.Component<any, {}> = ReactTestUtils.renderIntoDocument(
+        const view: ShallowWrapper<any, {}> = shallow(
           <View />
         );
 
-        const elements: Array<Element> = ReactTestUtils.scryRenderedDOMComponentsWithClass(view, 'list');
-        expect(elements.length).toBe(1);
+        expect(view.find('.list').length).toBe(1);
     });
 });

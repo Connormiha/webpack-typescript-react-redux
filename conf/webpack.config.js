@@ -49,7 +49,7 @@ module.exports = {
 	resolve: {
 		root: [sourcePath],
 		//modulesDirectories: [nodePath],
-		extensions:         ['', '.js', '.ts', '.tsx']
+		extensions:         ['', '.js', '.ts', '.tsx', '.json']
 	},
 	resolveLoader: {
         root: [nodePath]
@@ -73,9 +73,13 @@ module.exports = {
 				loader: stylusLoaders
 			},
 			{
-        test: /\.(png|svg|jpg|gif)$/,
-        loader: "file",
-      }
+				test: /\.(png|svg|jpg|gif)$/,
+				loader: "file"
+			},
+			{
+				test: /\.json$/,
+				loader: 'json'
+			}
 		],
 	},
 	devtool: PARAMS.sourceMap,
