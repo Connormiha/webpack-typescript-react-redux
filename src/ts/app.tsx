@@ -6,7 +6,7 @@ import About from 'components/page/about';
 import store from './store';
 import {Provider} from 'react-redux';
 
-//import CSS
+// import CSS
 import '../css/style.styl';
 
 render(

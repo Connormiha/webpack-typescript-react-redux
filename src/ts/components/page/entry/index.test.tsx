@@ -16,7 +16,7 @@ describe('Views tests', () => {
     it('Test GeneratorApp Component', () => {
         const FAKE_STORE = {
             dispatch() {
-                //pass
+                // pass
             },
 
             getState() {
@@ -28,7 +28,7 @@ describe('Views tests', () => {
             },
 
             subscribe() {
-                //pass
+                // pass
             }
         };
 

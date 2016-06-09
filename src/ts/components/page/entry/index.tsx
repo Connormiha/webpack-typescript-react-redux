@@ -20,16 +20,7 @@ export class BtnGenerate extends React.Component<any, {}> {
 	}
 };
 
-@connect(
-	({people}) => ({people}),
-	dispatch => {
-		return {
-			onChangeCount: (count: number) => dispatch(changeCount(count)),
-			onClickGenerate: () => dispatch(generateClick())
-		};
-	}
-)
-export class GeneratorApp extends React.Component<any, {}> {
+class GeneratorAppClass extends React.Component<any, {}> {
 
 	handleGenerateClick() {
 		this.props.onClickGenerate();
@@ -69,6 +60,17 @@ export class GeneratorApp extends React.Component<any, {}> {
 		);
 	}
 };
+
+// Todo. Refactoring to decarator after fix redux-react typings
+export let GeneratorApp = connect(
+	({people}) => ({people}),
+	dispatch => {
+		return {
+			onChangeCount: (count: number) => dispatch(changeCount(count)),
+			onClickGenerate: () => dispatch(generateClick())
+		};
+	}
+)(GeneratorAppClass);
 
 export class App extends React.Component<any, any> {
 	render () {
