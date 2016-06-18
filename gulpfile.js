@@ -14,8 +14,8 @@ let changedFilesStylus;
 if (PRE_COMMIT) {
     changedFiles = execSync('git diff --cached --name-only --diff-filter=ACM', {encoding: 'utf8'});
     changedFiles = changedFiles.split('\n');
-    changedFilesTypescript = changedFiles.filter((item) => /\.tsx?$/.test(item));
-    changedFilesStylus = changedFiles.filter((item) => /\.styl$/.test(item));
+    changedFilesTypescript = changedFiles.filter((item) => /^src\/.+?\.tsx?$/.test(item));
+    changedFilesStylus = changedFiles.filter((item) => /^src\/.+?\.styl$/.test(item));
 }
 
 /**

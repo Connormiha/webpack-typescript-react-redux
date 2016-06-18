@@ -2,7 +2,7 @@
 
 const WEBPACK_CONFIG = require('./webpack.config.js');
 
-module.exports = function (options) {
+module.exports = (options) => {
     const CONFIG = {
 
         // base path that will be used to resolve all patterns (eg. files, exclude)
@@ -28,7 +28,7 @@ module.exports = function (options) {
         },
 
         webpackMiddleware: {
-            noInfo: true,
+            noInfo: true
         },
 
         webpack: WEBPACK_CONFIG,

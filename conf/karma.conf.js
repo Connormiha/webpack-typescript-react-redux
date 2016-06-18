@@ -2,7 +2,7 @@
 
 const KARMA_FACTORY = require('./karma-make-config.js');
 
-module.exports = function (config) {
+module.exports = (config) => {
   config.set(KARMA_FACTORY({
 
   }));
