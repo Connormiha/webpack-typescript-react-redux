@@ -24,8 +24,10 @@ if (PRE_COMMIT) {
  */
 gulp.task('tslint', ()=>
     gulp.src(PRE_COMMIT ? changedFilesTypescript : ['src/**/*.{ts,tsx}'])
-        .pipe(tslint())
-        .pipe(tslint.report('verbose'))
+        .pipe(tslint({
+            formatter: 'verbose'
+        }))
+        .pipe(tslint.report())
 );
 
 /**
