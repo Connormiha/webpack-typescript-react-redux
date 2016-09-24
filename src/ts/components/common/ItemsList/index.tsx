@@ -6,7 +6,7 @@ export interface ItemListPropsInterface {
 	items: Array<NameItem>;
 };
 
-export default class ItemsList extends React.Component<ItemListPropsInterface, {}> {
+export default class ItemsList extends React.PureComponent<ItemListPropsInterface, {}> {
 	render () {
 		const items: Array<React.ReactElement<NameItem>> = this.props.items.map((item) => {
 			return (

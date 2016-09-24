@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {IndexLink} from 'react-router';
 
-export default class About extends React.Component<any, {}> {
+export default class About extends React.PureComponent<any, {}> {
 	render () {
 		return (
 			<div>

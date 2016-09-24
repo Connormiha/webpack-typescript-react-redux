@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {NameItem} from 'tools/generator';
 
-export default class Item extends React.Component<NameItem, {}> {
+export default class Item extends React.PureComponent<NameItem, {}> {
 	render () {
 		return (
 			<div className='item'>
